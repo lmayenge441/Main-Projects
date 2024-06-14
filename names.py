@@ -18,9 +18,20 @@ def get_string_lengths(strings):
       List.append(len(x))
    return List
 def get_names():
-   words= []
-   enter = input("Enter a name: ")
-   if enter == 'STOP' or 'stop' or 'Stop':
-         break
-      words.append(enter)
-   return words
+   enter = input("Enter a name (or 'stop' to stop): ")
+   if enter.lower() == 'stop':
+      return
+   elif enter:
+      names = enter.split()
+      if len(names) >= 1:
+         print("Names in order:")
+         for name in names:
+            print(name)
+      else:
+         print("Please enter at least two names.")
+      get_names()
+
+
+get_names()
+   #words.append(enter)
+# #return words
