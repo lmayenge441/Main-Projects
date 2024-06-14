@@ -1,7 +1,68 @@
 #Name: Lydia Mayenge
 #Date: 05/18/2021
 #This code allows me to move chess pieces across a chessboard
+import turtle
 
+# Constants for the chessboard and pieces
+SCREEN_SIZE = 600
+GRID_SIZE = 8
+SQUARE_SIZE = SCREEN_SIZE // GRID_SIZE
+
+# Initialize the turtle screen
+screen = turtle.Screen()
+screen.title("Chessboard")
+screen.setup(SCREEN_SIZE, SCREEN_SIZE)
+
+# Function to draw the chessboard grid
+def draw_chessboard():
+    turtle.speed(0)  # Set the turtle's speed to the fastest
+    turtle.penup()  # Lift the pen
+    turtle.goto(-SCREEN_SIZE // 2, -SCREEN_SIZE // 2)  # Move to the bottom-left corner of the screen
+    turtle.pendown()  # Place the pen down
+
+    for _ in range(4):
+        turtle.forward(SCREEN_SIZE)
+        turtle.left(90)
+
+    for row in range(GRID_SIZE - 1):
+        turtle.penup()
+        turtle.goto(-SCREEN_SIZE // 2, (row + 1) * SQUARE_SIZE - SCREEN_SIZE // 2)
+        turtle.pendown()
+        turtle.forward(SCREEN_SIZE)
+
+    turtle.right(90)
+
+    for col in range(GRID_SIZE - 1):
+        turtle.penup()
+        turtle.goto((col + 1) * SQUARE_SIZE - SCREEN_SIZE // 2, -SCREEN_SIZE // 2)
+        turtle.pendown()
+        turtle.forward(SCREEN_SIZE)
+
+    turtle.penup()  # Lift the pen at the end
+    turtle.hideturtle()  # Hide the turtle
+
+# Function to draw the chess pieces on the board
+def draw_pieces():
+    turtle.penup()  # Lift the pen
+    turtle.goto(-SCREEN_SIZE // 2 + SQUARE_SIZE // 2, -SCREEN_SIZE // 2 + SQUARE_SIZE // 2)  # Move to the first square
+    turtle.pendown()  # Place the pen down
+
+    for row in range(GRID_SIZE):
+        for col in range(GRID_SIZE):
+            piece = chessboard[row][col]
+            if piece != '':
+                turtle.write(piece, align='center', font=('Arial', 24, 'normal'))
+
+            turtle.forward(SQUARE_SIZE)
+        turtle.backward(SCREEN_SIZE)
+        turtle.right(90)
+        turtle.forward(SQUARE_SIZE)
+        turtle.left(90)
+
+    turtle.penup()  # Lift the pen at the end
+    turtle.hideturtle()  # Hide the turtle
+
+# Main code
 #Initialize  the chessboard
 chessboard = [
     ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
