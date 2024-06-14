@@ -74,6 +74,10 @@ chessboard = [
     ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
     ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r']
 ]
+draw_chessboard()
+draw_pieces()
+
+turtle.done()
 # Function to move a chess piece
 def move_piece(start_pos, end_pos):
     start_row, start_col = start_pos
